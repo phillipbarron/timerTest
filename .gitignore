@@ -1,0 +1,4 @@
+# eclipse and intelli-J meta files and directories
+._*
+.idea/
+vendor
