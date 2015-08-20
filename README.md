@@ -32,7 +32,7 @@ Install dev dependancies:
 composer install
 ```
 
-Run tests from within the tests folder
+Run tests from the project root
 
 ```
 vendor/bin/phpunit tests
