@@ -15,7 +15,7 @@ usage
 
         $executionTimer->stopTimer('bob');
         $executionTimer->stopTimer('phill');
-
+        
         $executionTimer->getTotalExecutionTime(),
         $executionTimer->getTotalExecutionTime('alice'),
         $executionTimer->getTotalExecutionTime('phill')
