@@ -1,5 +1,6 @@
 {
   "name": "phillbarron/timer",
+  "version" : "1.0.0",
   "description": "Script timer",
   "authors": [
     {
