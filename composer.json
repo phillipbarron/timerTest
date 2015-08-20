@@ -1,19 +1,20 @@
 {
-    "name": "phillbarron/timer",
-    "description": "Some composer package",
-    "authors": [
-        {
-            "name": "Phill Barron",
-            "email": "phillipbarron242@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "php" : ">=5.5.0"
-    },
-    "autoload": {
-      "psr-0": {
-        "Timer" : "src/"
-      }
+  "name": "phillbarron/timer",
+  "description": "Script timer",
+  "authors": [
+    {
+      "name": "Phill Barron",
+      "email": "phillipbarron242@gmail.com"
     }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.5.0",
+    "phpunit/phpunit": "4.6.4"
+  },
+  "autoload": {
+    "psr-0": {
+      "Timer": "src/"
+    }
+  }
 }

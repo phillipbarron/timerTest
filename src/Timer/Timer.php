@@ -9,14 +9,9 @@ class Timer
 {
     private $startTime;
     private $stopTime;
-    private $name;
 
-    /**
-     * @param $name
-     */
-    public function __construct($name)
+    public function __construct()
     {
-        $this->name = $name;
         date_default_timezone_set('UTC');
     }
 
@@ -33,6 +28,9 @@ class Timer
      */
     public function stop()
     {
+        if(!isset($this->startTime)){
+            return false;
+        }
         $this->stopTime = microtime(true);
     }
 
@@ -61,15 +59,10 @@ class Timer
      */
     private function getExecutionTime($time)
     {
+        if(empty($this->startTime)){
+            return false;
+        }
         return $time - $this->startTime;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -94,6 +87,6 @@ class Timer
      */
     public function isComplete()
     {
-        return !empty($this->stopTime);
+        return !empty($this->stopTime) && !empty($this->startTime);
     }
 }
