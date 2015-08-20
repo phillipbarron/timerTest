@@ -71,8 +71,8 @@ class ExecutionTimer
      */
     public function getTotalExecutionTime($timerName = null)
     {
-        //todo - we are returning the sum of all the scripts - what might make more sense
-        //todo - to take earliest and latest timestamp and return the difference
+        //todo - we are returning the sum of all the scripts as he total - it might make more sense
+        //todo - to take earliest and latest timestamp and return the difference of these
         $executionTime = 0;
         if (empty($timerName)) {
             foreach ($this->timers as $timerName) {
