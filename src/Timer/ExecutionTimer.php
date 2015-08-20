@@ -1,5 +1,7 @@
 <?php
 
+namespace Timer;
+
 class ExecutionTimer
 {
     private $timerFactory;
@@ -20,7 +22,7 @@ class ExecutionTimer
      */
     public function addTimer($name)
     {
-        if ($this->timerNameExists($name)){
+        if ($this->timerNameExists($name)) {
             throw new DuplicateTimerNameException();
         }
         $this->timers[$name] = $this->timerFactory->create($name);
@@ -32,7 +34,7 @@ class ExecutionTimer
      */
     private function timerNameExists($name)
     {
-        if(array_key_exists($name, $this->timers)){
+        if (array_key_exists($name, $this->timers)) {
             return true;
         }
         return false;
@@ -44,7 +46,7 @@ class ExecutionTimer
      */
     public function startTimer($timerName)
     {
-        if (! $this->timerNameExists($timerName)){
+        if (!$this->timerNameExists($timerName)) {
             throw new TimerNameDoesNotExistException();
         }
         $this->timers[$timerName]->start();
@@ -56,9 +58,33 @@ class ExecutionTimer
      */
     public function stopTimer($timerName)
     {
-        if (! $this->timerNameExists($timerName)){
+        if (!$this->timerNameExists($timerName)) {
             throw new TimerNameDoesNotExistException();
         }
         $this->timers[$timerName]->stop();
+    }
+
+    /**
+     * @param null $timerName
+     * @return int time elapsed for named timer or all timers
+     * @throws TimerNameDoesNotExistException
+     */
+    public function getTotalExecutionTime($timerName = null)
+    {
+        $executionTime = 0;
+        if (empty($timerName)) {
+            foreach ($this->timers as $timerName) {
+                if ($timerName->isComplete()) {
+                    $executionTime += $timerName->getTotalExecutionTime();
+                }
+            }
+        } else {
+            if (!$this->timerNameExists($timerName)) {
+                throw new TimerNameDoesNotExistException();
+            }
+            $executionTime += $this->timers[$timerName]->getTotalExecutionTime();
+        }
+
+        return $executionTime;
     }
 }
