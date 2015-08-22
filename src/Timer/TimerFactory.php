@@ -8,11 +8,10 @@ namespace Timer;
 class TimerFactory
 {
     /**
-     * @param $name
      * @return Timer
      */
-    public function create($name)
+    public function create()
     {
-        return new Timer($name);
+        return new Timer();
     }
 }

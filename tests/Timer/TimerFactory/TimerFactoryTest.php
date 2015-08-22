@@ -8,6 +8,6 @@ class TimerFactoryTest extends PHPUnit_Framework_TestCase
     public function testReturnsCorrectType()
     {
         $timerFactory = new TimerFactory();
-        $this->assertTrue($timerFactory->create('name') instanceof Timer);
+        $this->assertTrue($timerFactory->create() instanceof Timer);
     }
 }
